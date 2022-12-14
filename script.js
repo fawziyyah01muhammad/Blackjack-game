@@ -1,8 +1,19 @@
 // 2. Create the player object. Give it two keys, name and chips, and set their values
-let player = {
-    name: "fawzy",
-    chips: 150
-}
+// let player = {
+//     name: "Points",
+//     chips: 
+// }
+
+// function(){
+//         if(sum === 21){
+//             message = "Wohoo! You've got Blackjack! 🥳"
+//             hasBlackJack = true
+//             for(i = 10; i < 10; i ++){
+//          console.log(player.chips)
+//             }
+            
+//     }
+// }
 // 2. Use getRandomCard() to set the values of firstCard and secondCard
 
 
@@ -15,20 +26,22 @@ let cards = []
 let sum = 0
 
 // 1. Create a variable called isAlive and assign it to true
-let hasBlackJack = false
+let hasBlackJack = true
 let isAlive = false
 let message = ""
 let messageEl = document.getElementById('message-el')
 let sumEl = document.getElementById('sum-el')
 let cardEl = document.getElementById('card-el')
-
+let totalPoints = 0
 
 // 3. Grab ahold of the player-el paragraph and store it in a variable called playerEl
 
 // 4. Render the player's name and chips in playerEl
 let playerEl = document.getElementById('player-el')
-playerEl.textContent = player.name + " : $" + player.chips
+// playerEl.textContent = player.name + " : $" + player.chips
 // Make this function return a random number between 1 and 13
+
+
 
 function getRandomCard(){
      // if 1     -> return 11
@@ -61,10 +74,12 @@ function renderGame(){
     // cardEl.textContent = "Card:" + "rer" + firstCard  + " " + secondCard
     sumEl.textContent = "Sum:" + " " + sum
 if(sum <= 20){
-    message = "Do you want to draw a new card? 🙂"
+    message = "Do you want to draw a new card?"
 }else if(sum === 21){
-    message = "Wohoo! You've got Blackjack! 🥳"
+    message = "Wohoo! You've got Blackjack!"
     hasBlackJack = true
+    playerEl.textContent = "Points:" + (totalPoints += 10)
+   
 }else{
   message = "You're out of the game! 😭"
   isAlive = false
@@ -72,30 +87,18 @@ if(sum <= 20){
 messageEl.textContent = message
 }
 
-function newCard() {
-    // Only allow the player to get a new card if she IS alive and does NOT have Blackjack
-    if (isAlive === true && hasBlackJack === false) {
-        let card = getRandomCard()
-        sum += card
-        cards.push(card)
-        renderGame()        
-    }
-
-}
 
 function newCard(){
      // 3. Use the getRandomCard() to set the value of card
 // Only allow the player to get a new card if she IS alive and does NOT have Blackjack
-if(isAlive === true && hasBlackJack === false){
+if(isAlive === true && hasBlackJack === true){
     console.log("Drawing a new card from the deck!")
     let card = getRandomCard()
     sum += card
     // Push the card to the cards array
     cards.push(card)
-    console.log(cards)
     renderGame()
     
 }
    
  }
-
